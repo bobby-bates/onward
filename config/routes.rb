@@ -6,4 +6,9 @@ Rails.application.routes.draw do
 
   # Route to test Rails configuration:
   get '/hello', to: 'application#hello_world'
+
+  # Handle all client-side route requests:
+  get '*path',
+      to: 'fallback#index',
+      constraints: ->(req) { !req.xhr? && req.format.html? }
 end
