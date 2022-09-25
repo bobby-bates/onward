@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: %i[ show update destroy ]
+  before_action :set_location, only: %i[show update destroy]
 
   # GET /locations
   def index
@@ -20,7 +20,7 @@ class LocationsController < ApplicationController
     if @location.save
       render json: @location, status: :created, location: @location
     else
-      render json: @location.errors, status: :unprocessable_entity
+      render json: { errors: @location.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class LocationsController < ApplicationController
     if @location.update(location_params)
       render json: @location
     else
-      render json: @location.errors, status: :unprocessable_entity
+      render json: { errors: @location.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -39,13 +39,14 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def location_params
-      params.require(:location).permit(:name, :lat, :lng)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def location_params
+    params.require(:location).permit(:name, :lat, :lng)
+  end
 end
