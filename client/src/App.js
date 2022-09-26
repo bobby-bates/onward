@@ -9,23 +9,40 @@ import AllTrips from './AllTrips'
 import NoMatch from './NoMatch'
 
 export default function App() {
-  const [count, setCount] = useState(0)
+  const [users, setUsers] = useState([])
+  const [locations, setLocations] = useState([])
+  const [trips, setTrips] = useState([])
 
   useEffect(() => {
-    fetch('/hello')
+    fetch('/users')
       .then(r => r.json())
-      .then(data => setCount(data.count))
+      .then(theUsers => {
+        // debugger
+        setUsers(theUsers)
+      })
+
+      fetch('/locations')
+      .then(r => r.json())
+      .then(theLocations => {
+        setLocations(theLocations)
+      })
+
+      fetch('/trips')
+      .then(r => r.json())
+      .then(theTrips => {
+        setTrips(theTrips)
+      })
   }, [])
 
   return (
     <Routes>
       <Route path='/' element={<NavBar />}>
-        <Route index element={<Home />} />
+        <Route index element={<Home users={users} />} />
         <Route path='testing' element={<h1>Test Route</h1>} />
         <Route path='signup' element={<SignUp />} />
         <Route path='signin' element={<SignIn />} />
         <Route path='my-trips' element={<MyTrips />} />
-        <Route path='all-trips' element={<AllTrips />} />
+        <Route path='all-trips' element={<AllTrips locations={locations} trips={trips} />} />
 
         <Route path='*' element={<NoMatch />} />
       </Route>
