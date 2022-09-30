@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 export default function NavBar() {
   return (
     <>
-      <h1>Hi from NavBar</h1>
+      <h2>Hi from NavBar</h2>
 
       <Outlet />
     </>

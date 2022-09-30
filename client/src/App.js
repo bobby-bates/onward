@@ -17,7 +17,6 @@ export default function App() {
     fetch('/users')
       .then(r => r.json())
       .then(theUsers => {
-        // debugger
         setUsers(theUsers)
       })
 

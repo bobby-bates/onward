@@ -1,9 +1,12 @@
+import { useEffect } from 'react'
+import GetCurrentLocation from './GetCurrentLocation'
+
 export default function Home({ users }) {
-  // debugger
+
   return (
     <>
-      <h2><i>onward</i></h2>
-      {users}
+      <h1><i>onward</i></h1>
+      <GetCurrentLocation />
     </>
   )
 }
