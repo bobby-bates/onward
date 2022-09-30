@@ -6,7 +6,7 @@ export default function GetCurrentLocation() {
 
   return (
     <>
-      yo
+      <h3>Hi from GetCurrentLocation</h3>
     </>
   )
 }

@@ -9,5 +9,15 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@mantine/core": "^5.4.2",
+    "@mantine/dates": "^5.4.2",
+    "@mantine/form": "^5.4.2",
+    "@mantine/hooks": "^5.4.2",
+    "@mantine/modals": "^5.4.2",
+    "@mantine/notifications": "^5.4.2",
+    "dayjs": "^1.11.5"
   }
 }
