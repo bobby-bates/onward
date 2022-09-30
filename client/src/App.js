@@ -12,6 +12,7 @@ export default function App() {
   const [users, setUsers] = useState([])
   const [locations, setLocations] = useState([])
   const [trips, setTrips] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
 
   useEffect(() => {
     fetch('/users')
@@ -33,10 +34,16 @@ export default function App() {
       })
   }, [])
 
+  const handleLocation = coords => {
+    // debugger
+    setCurrentUser({ ...currentUser, coords: coords })
+  }
+  console.log('currentUser: ', currentUser)
+
   return (
     <Routes>
       <Route path='/' element={<NavBar />}>
-        <Route index element={<Home users={users} />} />
+        <Route index element={<Home users={users} handleLocation={handleLocation} />} />
         <Route path='testing' element={<h1>Test Route</h1>} />
         <Route path='signup' element={<SignUp />} />
         <Route path='signin' element={<SignIn />} />

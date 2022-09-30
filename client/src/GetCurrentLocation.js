@@ -1,13 +1,15 @@
 import React from 'react'
 
-export default function GetCurrentLocation() {
+export default function GetCurrentLocation({ handleLocation }) {
 
   const locationResult = e => {
     // TODO: Add spinner while waiting for this result
-    debugger
+    // debugger
+    handleLocation(e.coords)
   }
 
   const getCurrentLocation = () => {
+    console.log('🌎Finding location...')
     navigator.geolocation.getCurrentPosition(locationResult)
   }
 
