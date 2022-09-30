@@ -11,6 +11,8 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "@deck.gl/core": "^8.8.11",
+    "@deck.gl/layers": "^8.8.11",
     "@emotion/react": "^11.10.4",
     "@mantine/core": "^5.4.2",
     "@mantine/dates": "^5.4.2",
